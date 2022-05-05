@@ -1,0 +1,84 @@
+{
+  "tests": [
+    {
+      "name": "Compilacao",
+      "setup": "touch estudantes.bin && cmake -B build -DCLASSROOM=ON",
+      "run": "cmake --build build",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Inicializacao",
+      "setup": "",
+      "run": "./build/tests/test1",
+      "input": "",
+      "output": "SIGA: Inicializado com sucesso\r\n0 registros de estudantes",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Cadastro1",
+      "setup": "",
+      "run": "./build/tests/test2",
+      "input": "",
+      "output": "SIGA: Inicializado com sucesso\r\n0 registros de estudantes\r\nNumero de estudantes armazenados: 4",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Cadastro2",
+      "setup": "",
+      "run": "./build/tests/test3",
+      "input": "",
+      "output": "SIGA: Inicializado com sucesso\r\n4 registros de estudantes\r\nNumero de estudantes armazenados: 5",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Pesquisa1",
+      "setup": "echo \"123\" > input.dat",
+      "run": "./build/tests/test4 < input.dat",
+      "input": "",
+      "output": "SIGA: Inicializado com sucesso\r\n5 registros de estudantes\r\nNome: Joao\r\nMatricula: 123\r\nIRA: 123",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Pesquisa2",
+      "setup": "",
+      "run": "./build/tests/test4",
+      "input": "000",
+      "output": "SIGA: Inicializado com sucesso\r\n5 registros de estudantes\r\nEstudante não cadastrado",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Altera",
+      "setup": "echo \"123\" > input.dat && echo \"Eduardo\" >> input.dat && echo \"2020\" >> input.dat && echo \"10.0\" >> input.dat ",
+      "run": "./build/tests/test5 < input.dat ",
+      "input": "",
+      "output": "SIGA: Inicializado com sucesso\r\n5 registros de estudantes\r\nDados Alterados",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Salva",
+      "setup": "",
+      "run": "./build/tests/test6 && cat estudantes.csv",
+      "input": "",
+      "output": "SIGA: Inicializado com sucesso\r\n5 registros de estudantes\r\nMatricula;Nome;Ano de Ingresso;IRA\r\n123;Eduardo;2020;10\r\n456;Maria;2001;8.5\r\n789;Pedro;2002;7.5\r\n101;Jose;2003;6.5\r\n1001;Ana;2006;9.5",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    }
+  ]
+}
